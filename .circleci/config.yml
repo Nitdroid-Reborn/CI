@@ -1,0 +1,34 @@
+version: 2.1
+jobs:
+  CherishOS-Bacon:
+   docker:
+      - image: dopaemon/docker-image:MultiROM
+   steps:
+      - run:
+          name: Disk Info
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            df -h
+      - run:
+          name: Repo Sync
+          no_output_timeout: 20m
+          command: |
+            mkdir -p Nitdroid && cd Nitdroid
+            repo init -u git://gitorious.org/android-n900/nitdroid_platform_manifest.git -b ics
+            repo sync -j$(nproc --all)
+      - run:
+          name: Setup CCACHE
+          no_output_timeout: 20m
+          command: |
+            echo "ccache -M 50G" > ~/.bashrc
+            echo "ccache -o compression=true" > ~/.bashrc
+            ccache -M 50G
+            ccache -o compression=true
+      - run:
+          name: Disk Info
+          no_output_timeout: 20m
+          command: |
+            lscpu
+            df -h
+            java -version
