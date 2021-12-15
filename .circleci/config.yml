@@ -11,6 +11,16 @@ jobs:
             lscpu
             df -h
       - run:
+          name: Repo
+          no_output_timeout: 20m
+          command: |
+            sudo apt-get update && sudo apt-get install wget -y
+            mkdir ~/bin
+            curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+            chmod a+x ~/bin/repo
+            sudo rm -rf /usr/bin/repo
+            sudo mv ~/bin/repo /usr/bin/repo
+      - run:
           name: Python 2.7
           no_output_timeout: 20m
           command: |
