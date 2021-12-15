@@ -15,8 +15,8 @@ jobs:
           no_output_timeout: 20m
           command: |
             sudo apt-get update
-            sudo apt-get install python2 -y
-            sudo ln -sf python2.7 /usr/bin/python
+            sudo apt-get install python3 -y
+            sudo ln -sf python3 /usr/bin/python
       - run:
           name: Repo Sync
           no_output_timeout: 20m
