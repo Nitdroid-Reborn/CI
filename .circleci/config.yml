@@ -18,6 +18,7 @@ jobs:
             mkdir ~/bin
             curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
             chmod a+x ~/bin/repo
+            git config --global http.sslVerify false
       - run:
           name: Python 2.7
           no_output_timeout: 20m
