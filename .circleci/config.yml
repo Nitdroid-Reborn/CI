@@ -26,16 +26,16 @@ jobs:
             sudo apt-get install software-properties-common -y
             sudo add-apt-repository --yes ppa:fkrull/deadsnakes
             sudo apt-get update
-            sudo apt-get install python3 -y
-            sudo ln -sf python3 /usr/bin/python
+            sudo apt-get install python3.6 -y
+            sudo ln -sf python3.6 /usr/bin/python
             python --version
       - run:
           name: Repo Sync
           no_output_timeout: 20m
           command: |
             mkdir -p Nitdroid && cd Nitdroid
-            python3 ~/bin/repo init -u git://gitorious.org/android-n900/nitdroid_platform_manifest.git -b ics
-            python3 ~/bin/repo sync -j$(nproc --all)
+            python3.6 ~/bin/repo init -u git://gitorious.org/android-n900/nitdroid_platform_manifest.git -b ics
+            python3.6 ~/bin/repo sync -j$(nproc --all)
       - run:
           name: Setup CCACHE
           no_output_timeout: 20m
