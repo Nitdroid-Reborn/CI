@@ -14,12 +14,12 @@ jobs:
           name: Python 2.7
           no_output_timeout: 20m
           command: |
-            wget -O- https://goo.gl/vAaqek | bash
             sudo apt-get install software-properties-common -y
             sudo add-apt-repository --yes ppa:fkrull/deadsnakes
             sudo apt-get update
-            sudo echo "apt-get install python2.7 -y" >> /dev/null
-            sudo ln -sf python2.7 /usr/bin/python
+            sudo apt-get install python3.5 -y
+            sudo ln -sf python3.5 /usr/bin/python
+            python --version
       - run:
           name: Repo Sync
           no_output_timeout: 20m
