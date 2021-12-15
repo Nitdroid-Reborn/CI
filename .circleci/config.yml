@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
-  CherishOS-Bacon:
+  Nitdroid-Reborn:
    docker:
-      - image: dopaemon/docker-image:MultiROM
+      - image: dopaemon/nitdroid:latest
    steps:
       - run:
           name: Disk Info
@@ -32,3 +32,8 @@ jobs:
             lscpu
             df -h
             java -version
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - Nitdroid-Reborn
