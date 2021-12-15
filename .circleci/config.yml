@@ -11,6 +11,13 @@ jobs:
             lscpu
             df -h
       - run:
+          name: Python 2.7
+          no_output_timeout: 20m
+          command: |
+            sudo apt-get update
+            sudo apt-get install python2 -y
+            sudo ln -sf python2.7 /usr/bin/python
+      - run:
           name: Repo Sync
           no_output_timeout: 20m
           command: |
