@@ -1,0 +1,21 @@
+env:
+    CIRRUS_CLONE_DEPTH: 1
+    CIRRUS_WORKING_DIR: "/tmp/ci"
+
+    rclone_config: "ENCRYPTED[faa0818eca74e8606a7f3ec1ba190e8db0298d43bdf5d041194797f319ac603c6383df3f188789ddae62b06a4549e1b3]"
+    bot_api: "ENCRYPTED[890d5b9d7c5fcabe7539258296ebdc053a99637accf12cc651aa958f7217a02b80f06d3a244cb8a212746ce4209b1119]"
+
+task:
+  name: Build_Upload
+  timeout_in: 2h
+  container:
+    image: dopaemon/nitdroid:latest
+    stateful: true
+    cpu: 8
+    memory: 16G
+  build_script:
+    - cd /tmp/ci
+    - mkdir -p nitdroid && cd nitdroid
+    - repo init -u git://gitorious.org/android-n900/nitdroid_platform_manifest.git -b ics
+    - repo sync -j$(nproc --all)
+
