@@ -34,7 +34,7 @@ jobs:
           no_output_timeout: 20m
           command: |
             mkdir -p Nitdroid && cd Nitdroid
-            python3.6 ~/bin/repo init -u git://gitorious.org/android-n900/nitdroid_platform_manifest.git -b ics
+            python3.6 ~/bin/repo init -u https://github.com/danielcbit/nitdroid_platform_manifest.git -b ics
             python3.6 ~/bin/repo sync -j$(nproc --all)
       - run:
           name: Setup CCACHE
