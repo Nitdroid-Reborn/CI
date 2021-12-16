@@ -41,7 +41,7 @@ jobs:
           command: |
             mkdir -p /tmp/Nitdroid && cd /tmp/Nitdroid
             python3.6 ~/bin/repo init -u https://github.com/Nitdroid-Reborn/nitdroid_platform_manifest.git -b jb
-            python3.6 ~/bin/repo sync -j$(nproc --all)
+            python3.6 ~/bin/repo sync -v -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
       - run:
           name: Build
           no_output_timeout: 20m
