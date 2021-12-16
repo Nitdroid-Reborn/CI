@@ -29,4 +29,9 @@ task:
     - ccache -z
     - chmod +x build.sh
     - ./build.sh
+  Start_Compile_script:
+    - cd /tmp/Nitdroid
+    - source build/envsetup.sh
+    - lunch n9-userdebug
+    - make j$(nproc --all)
 
