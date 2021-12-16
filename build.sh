@@ -39,8 +39,3 @@ mkdir -p /tmp/Nitdroid && cd /tmp/Nitdroid
 python3.6 /tmp/bin/repo init -u https://github.com/Nitdroid-Reborn/nitdroid_platform_manifest.git -b jb
 python3.6 /tmp/bin/repo sync -v -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 ##################################################################
-cd /tmp/Nitdroid
-source build/envsetup.sh
-lunch n9-userdebug
-make j$(nproc --all)
-##################################################################
