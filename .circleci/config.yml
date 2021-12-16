@@ -20,7 +20,12 @@ jobs:
             chmod a+x ~/bin/repo
             git config --global http.sslVerify false
       - run:
-          name: Python 2.7
+          name: Java
+          no_output_timeout: 20m
+          command: |
+            java --version
+      - run:
+          name: Python 3.6
           no_output_timeout: 20m
           command: |
             sudo apt-get update
