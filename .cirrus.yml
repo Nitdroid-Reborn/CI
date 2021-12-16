@@ -26,7 +26,6 @@ task:
     - export CCACHE_EXEC=$(which ccache)
     - export USE_CCACHE=1
     - ccache -M 20G
-    - ccache -o compression=true
     - ccache -z
     - chmod +x build.sh
     - ./build.sh
