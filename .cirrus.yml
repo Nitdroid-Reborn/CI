@@ -2,7 +2,7 @@ env:
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: "/tmp/ci"
 
-    rclone_conf: ""
+    rclone_conf: "ENCRYPTED[!fdfa84dd121f3e0082fb455a2b02c24687e181cb7d4a2413f0bfb72a12dc36e6346ae300244780d1191a3786c5a6278b!]"
 
 task:
   name: master
@@ -15,7 +15,7 @@ task:
   Install_Packages_Ubuntu_script:
     - rm -rf *
     - sudo apt-get update
-    - sudo apt-get -y install libswitch-perl
+    - sudo apt-get -y install libswitch-perl rclone
   Rclone_Configure_script:
     - mkdir -p ~/.config/rclone
     - echo "$rclone_conf" > ~/.config/rclone/rclone.conf
@@ -34,4 +34,8 @@ task:
     - source build/envsetup.sh
     - lunch n9-userdebug
     - make -j$(nproc --all)
+  Upload_Server_script:
+    - cd /tmp/Nitdroid/out/target/product/n9/
+    - ls
+    - rclone copy -v system.img drive:Share/
 
