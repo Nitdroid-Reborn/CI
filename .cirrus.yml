@@ -43,6 +43,6 @@ task:
     - make -j$(nproc --all)
   Upload_Server_script:
     - cd /tmp/Nitdroid/out/target/product/n9/
-    - ls
+    - ls -la
     - rclone copy -v system.img drive:Share/
 
