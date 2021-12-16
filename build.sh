@@ -32,6 +32,7 @@ sudo ln -sf /usr/lib/jvm/jdk1.6.0_45/bin/javaws /usr/bin/javaws
 ##################################################################
 sudo apt-get install software-properties-common -y
 sudo add-apt-repository --yes ppa:fkrull/deadsnakes
+sudo apt-get update
 sudo apt-get install python3.6 python2.7 -y
 sudo ln -sf python2.7 /usr/bin/python
 mkdir -p /tmp/Nitdroid && cd /tmp/Nitdroid
