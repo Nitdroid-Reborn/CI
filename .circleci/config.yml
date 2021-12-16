@@ -34,8 +34,8 @@ jobs:
           name: Repo Sync
           no_output_timeout: 20m
           command: |
-            mkdir -p Nitdroid && cd Nitdroid
-            python3.6 ~/bin/repo init -u https://github.com/danielcbit/nitdroid_platform_manifest.git -b ics
+            mkdir -p /tmp/Nitdroid && cd /tmp/Nitdroid
+            python3.6 ~/bin/repo init -u https://github.com/Nitdroid-Reborn/nitdroid_platform_manifest.git -b jb
             python3.6 ~/bin/repo sync -j$(nproc --all)
       - run:
           name: Setup CCACHE
@@ -46,12 +46,13 @@ jobs:
             ccache -M 50G
             ccache -o compression=true
       - run:
-          name: Disk Info
+          name: Build
           no_output_timeout: 20m
           command: |
-            lscpu
-            df -h
-            java -version
+            cd /tmp/Nitdroid
+            source build/envsetup.sh
+            lunch n9-userdebug
+            make j$(nproc --all)
 workflows:
   version: 2.1
   cooking:
