@@ -33,5 +33,5 @@ task:
     - cd /tmp/Nitdroid
     - source build/envsetup.sh
     - lunch n9-userdebug
-    - make j$(nproc --all)
+    - make -j$(nproc --all)
 
