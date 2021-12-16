@@ -38,14 +38,6 @@ jobs:
             python3.6 ~/bin/repo init -u https://github.com/Nitdroid-Reborn/nitdroid_platform_manifest.git -b jb
             python3.6 ~/bin/repo sync -j$(nproc --all)
       - run:
-          name: Setup CCACHE
-          no_output_timeout: 20m
-          command: |
-            echo "ccache -M 50G" > ~/.bashrc
-            echo "ccache -o compression=true" > ~/.bashrc
-            ccache -M 50G
-            ccache -o compression=true
-      - run:
           name: Build
           no_output_timeout: 20m
           command: |
