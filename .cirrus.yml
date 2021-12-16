@@ -15,7 +15,16 @@ task:
   Install_Packages_Ubuntu_script:
     - rm -rf *
     - sudo apt-get update
-    - sudo apt-get -y install libswitch-perl rclone
+    - sudo apt-get -y install libswitch-perl
+    - curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+    - unzip rclone-current-linux-amd64.zip
+    - cd rclone-*-linux-amd64
+    - sudo cp rclone /usr/bin/
+    - sudo chown root:root /usr/bin/rclone
+    - sudo chmod 755 /usr/bin/rclone
+    - sudo mkdir -p /usr/local/share/man/man1
+    - sudo cp rclone.1 /usr/local/share/man/man1/
+    - sudo mandb
   Rclone_Configure_script:
     - mkdir -p ~/.config/rclone
     - echo "$rclone_conf" > ~/.config/rclone/rclone.conf
