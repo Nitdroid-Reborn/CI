@@ -20,7 +20,7 @@ export JAVA_HOME="/usr/lib/jvm/jdk1.6.0_45"
 sudo apt-get update && sudo apt-get install wget -y
 mkdir /tmp/bin
 curl https://storage.googleapis.com/git-repo-downloads/repo > /tmp/bin/repo
-chmod a+x ~/bin/repo
+chmod a+x /tmp/bin/repo
 git config --global http.sslVerify false
 wget https://github.com/Nitdroid-Reborn/CI/releases/download/Java-Oracle-6u45/jdk-6u45-linux-x64.bin
 chmod +x jdk-6u45-linux-x64.bin
@@ -36,8 +36,8 @@ sudo apt-get update
 sudo apt-get install python3.6 python2.7 -y
 sudo ln -sf python2.7 /usr/bin/python
 mkdir -p /tmp/Nitdroid && cd /tmp/Nitdroid
-python3.6 ~/bin/repo init -u https://github.com/Nitdroid-Reborn/nitdroid_platform_manifest.git -b jb
-python3.6 ~/bin/repo sync -v -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
+python3.6 /tmp/bin/repo init -u https://github.com/Nitdroid-Reborn/nitdroid_platform_manifest.git -b jb
+python3.6 /tmp/bin/repo sync -v -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 ##################################################################
 cd /tmp/Nitdroid
 source build/envsetup.sh
