@@ -54,6 +54,7 @@ task:
     - echo "---------------------------------------------------------"
     - ls data
     - echo "---------------------------------------------------------"
+    - rm -rf root/system && mv system root/system
     - tar -cvzf Nitdroid-N9-$ZIPDATE.tar.gz root
     - echo "---------------------------------------------------------"
     - rclone copy -v Nitdroid-N9-$ZIPDATE.tar.gz drive:Share/
