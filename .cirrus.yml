@@ -42,6 +42,7 @@ task:
     - lunch n9-userdebug
     - make -j$(nproc --all)
   Upload_Server_script:
+    - export ZIPDATE=$(date +"%Y-%m-%d")
     - cd /tmp/Nitdroid/out/target/product/n9/
     - ls -la
     - echo "---------------------------------------------------------"
@@ -53,5 +54,9 @@ task:
     - echo "---------------------------------------------------------"
     - ls data
     - echo "---------------------------------------------------------"
-    - rclone copy -v system.img drive:Share/
+    - tar -cvzf Nitdroid-N9-$ZIPDATE.tar.gz root
+    - echo "---------------------------------------------------------"
+    - rclone copy -v Nitdroid-N9-$ZIPDATE.tar.gz drive:Share/
+    - echo "---------------------------------------------------------"
+   
 
